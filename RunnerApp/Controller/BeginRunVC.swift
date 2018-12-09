@@ -9,7 +9,7 @@
 import UIKit
 import Realm
 
-class FirstViewController: UIViewController {
+class BeginRunVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

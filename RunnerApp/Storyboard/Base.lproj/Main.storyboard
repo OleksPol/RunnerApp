@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xvg-Is-yX7">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,7 +15,7 @@
             <objects>
                 <viewController title="Second" id="bq5-Yn-cXo" customClass="SecondViewController" customModule="RunnerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fj5-0d-CpI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="r9C-gJ-cS8"/>
@@ -24,23 +24,72 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFq-MR-vf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="552" y="470"/>
+            <point key="canvasLocation" x="551" y="546"/>
         </scene>
         <!--First-->
         <scene sceneID="lQE-ZP-uzH">
             <objects>
-                <viewController title="First" id="GED-ZD-yeu" customClass="FirstViewController" customModule="RunnerApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="First" id="GED-ZD-yeu" customClass="BeginRunVC" customModule="RunnerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ye7-oY-XnF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG" translatesAutoresizingMaskIntoConstraints="NO" id="Pdt-7K-qkd">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                            </imageView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eHh-ya-mfS">
+                                <rect key="frame" x="0.0" y="81" width="414" height="474"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Run" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NtB-a2-FbP">
+                                <rect key="frame" x="186" y="28" width="42" height="33"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MPN-J9-NLs">
+                                <rect key="frame" x="160" y="582" width="94.333333333333314" height="93"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQg-a3-gC2">
+                                        <rect key="frame" x="0.0" y="0.0" width="94.333333333333329" height="71"/>
+                                        <state key="normal" image="startRunningButton"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start running" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TiZ-s4-82q">
+                                        <rect key="frame" x="0.0" y="71" width="94.333333333333329" height="22"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQj-7n-i7y">
+                                <rect key="frame" x="342" y="484" width="58" height="58"/>
+                                <state key="normal" image="centerNavButton"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MPN-J9-NLs" firstAttribute="centerX" secondItem="ye7-oY-XnF" secondAttribute="centerX" id="00n-fJ-uoD"/>
+                            <constraint firstItem="Pdt-7K-qkd" firstAttribute="top" secondItem="ye7-oY-XnF" secondAttribute="top" id="1nP-nW-QL2"/>
+                            <constraint firstItem="qQg-a3-gC2" firstAttribute="top" secondItem="eHh-ya-mfS" secondAttribute="bottom" constant="27" id="8zP-xC-pol"/>
+                            <constraint firstItem="NtB-a2-FbP" firstAttribute="top" secondItem="fhc-7H-k6y" secondAttribute="top" constant="8" id="Hs3-dz-jIK"/>
+                            <constraint firstItem="Pdt-7K-qkd" firstAttribute="leading" secondItem="fhc-7H-k6y" secondAttribute="leading" id="QFb-sg-zrt"/>
+                            <constraint firstItem="eHh-ya-mfS" firstAttribute="top" secondItem="NtB-a2-FbP" secondAttribute="bottom" constant="20" id="S8j-ot-P9J"/>
+                            <constraint firstItem="eHh-ya-mfS" firstAttribute="trailing" secondItem="fhc-7H-k6y" secondAttribute="trailing" id="TA2-pe-Py2"/>
+                            <constraint firstItem="fhc-7H-k6y" firstAttribute="bottom" secondItem="MPN-J9-NLs" secondAttribute="bottom" constant="12" id="Um3-iO-iHP"/>
+                            <constraint firstItem="NtB-a2-FbP" firstAttribute="centerX" secondItem="ye7-oY-XnF" secondAttribute="centerX" id="W9Q-Vm-x8s"/>
+                            <constraint firstItem="eHh-ya-mfS" firstAttribute="leading" secondItem="fhc-7H-k6y" secondAttribute="leading" id="ZOo-5K-cNN"/>
+                            <constraint firstItem="LQj-7n-i7y" firstAttribute="top" secondItem="eHh-ya-mfS" secondAttribute="bottom" constant="-71" id="aGM-58-Eze"/>
+                            <constraint firstItem="Pdt-7K-qkd" firstAttribute="trailing" secondItem="fhc-7H-k6y" secondAttribute="trailing" id="mgQ-i4-Td1"/>
+                            <constraint firstItem="Pdt-7K-qkd" firstAttribute="bottom" secondItem="fhc-7H-k6y" secondAttribute="bottom" id="qGH-uU-4jJ"/>
+                            <constraint firstItem="fhc-7H-k6y" firstAttribute="trailing" secondItem="LQj-7n-i7y" secondAttribute="trailing" constant="14" id="rrU-Uk-3gM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fhc-7H-k6y"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" id="885-Pg-gf3"/>
+                    <tabBarItem key="tabBarItem" title="Run" image="tabbar-runIconGray" id="885-Pg-gf3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uat-vu-ux1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="552" y="-184"/>
+            <point key="canvasLocation" x="495.6521739130435" y="-282.88043478260875"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="x6q-oT-xup">
@@ -61,4 +110,10 @@
             <point key="canvasLocation" x="-400" y="143"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BG" width="375" height="667"/>
+        <image name="centerNavButton" width="58" height="58"/>
+        <image name="startRunningButton" width="71" height="71"/>
+        <image name="tabbar-runIconGray" width="27" height="28"/>
+    </resources>
 </document>
