@@ -12,6 +12,9 @@
 		A87A875821BD506A0063005A /* CurrentRunVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87A875721BD506A0063005A /* CurrentRunVC.swift */; };
 		A87A875A21BD5C7F0063005A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87A875921BD5C7F0063005A /* Extensions.swift */; };
 		A87A875C21BD88000063005A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A87A875B21BD88000063005A /* Assets.xcassets */; };
+		A87A875E21BD8D280063005A /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87A875D21BD8D280063005A /* Run.swift */; };
+		A87A876021BD93B70063005A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87A875F21BD93B70063005A /* Constants.swift */; };
+		A87A876221BD96DE0063005A /* RunLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87A876121BD96DE0063005A /* RunLogCell.swift */; };
 		A880381D21BD23F100A26CE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A880381C21BD23F100A26CE0 /* AppDelegate.swift */; };
 		A880381F21BD23F100A26CE0 /* BeginRunVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A880381E21BD23F100A26CE0 /* BeginRunVC.swift */; };
 		A880382221BD23F100A26CE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A880382021BD23F100A26CE0 /* Main.storyboard */; };
@@ -28,6 +31,9 @@
 		A87A875721BD506A0063005A /* CurrentRunVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentRunVC.swift; sourceTree = "<group>"; };
 		A87A875921BD5C7F0063005A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A87A875B21BD88000063005A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A87A875D21BD8D280063005A /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
+		A87A875F21BD93B70063005A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A87A876121BD96DE0063005A /* RunLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunLogCell.swift; sourceTree = "<group>"; };
 		A880381921BD23F100A26CE0 /* RunnerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunnerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A880381C21BD23F100A26CE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A880381E21BD23F100A26CE0 /* BeginRunVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginRunVC.swift; sourceTree = "<group>"; };
@@ -59,6 +65,7 @@
 		A87A874F21BD31AB0063005A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A87A875F21BD93B70063005A /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -108,6 +115,7 @@
 		A880382E21BD23FE00A26CE0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A87A875D21BD8D280063005A /* Run.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,6 +123,7 @@
 		A880382F21BD240500A26CE0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A87A876121BD96DE0063005A /* RunLogCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,7 +292,10 @@
 				A87A875421BD45400063005A /* RunLogVC.swift in Sources */,
 				A87A875621BD4CC30063005A /* LocationVC.swift in Sources */,
 				A880381F21BD23F100A26CE0 /* BeginRunVC.swift in Sources */,
+				A87A875E21BD8D280063005A /* Run.swift in Sources */,
+				A87A876221BD96DE0063005A /* RunLogCell.swift in Sources */,
 				A880381D21BD23F100A26CE0 /* AppDelegate.swift in Sources */,
+				A87A876021BD93B70063005A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

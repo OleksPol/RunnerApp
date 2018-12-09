@@ -32,7 +32,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="runLogCell" id="Hz7-Re-m4i">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RunLogCell" id="Hz7-Re-m4i" customClass="RunLogCell" customModule="RunnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hz7-Re-m4i" id="GIL-hD-ejB">
@@ -66,6 +66,13 @@
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QaM-sI-m2T">
+                                                    <rect key="frame" x="0.0" y="69" width="414" height="1"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="Uuo-9r-Khs"/>
+                                                    </constraints>
+                                                </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BWN-X4-KcM">
                                                     <rect key="frame" x="178" y="11.666666666666668" width="58.333333333333343" height="46.666666666666657"/>
                                                     <subviews>
@@ -91,6 +98,8 @@
                                                 <constraint firstAttribute="bottom" secondItem="ll5-ru-zLE" secondAttribute="bottom" id="43f-nZ-An8"/>
                                                 <constraint firstItem="C8G-qq-DWo" firstAttribute="centerX" secondItem="GIL-hD-ejB" secondAttribute="centerX" id="Iiq-ze-6tH"/>
                                                 <constraint firstItem="BWN-X4-KcM" firstAttribute="centerY" secondItem="GIL-hD-ejB" secondAttribute="centerY" id="JMT-MI-4ht"/>
+                                                <constraint firstAttribute="trailing" secondItem="QaM-sI-m2T" secondAttribute="trailing" id="LmM-c0-VFP"/>
+                                                <constraint firstAttribute="bottom" secondItem="QaM-sI-m2T" secondAttribute="bottom" id="Ve2-co-MuH"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Qns-lZ-z7h" secondAttribute="trailing" constant="8" id="f17-bq-Sgf"/>
                                                 <constraint firstItem="BWN-X4-KcM" firstAttribute="centerX" secondItem="GIL-hD-ejB" secondAttribute="centerX" id="f8Q-0J-EMq"/>
                                                 <constraint firstItem="C8G-qq-DWo" firstAttribute="leading" secondItem="GIL-hD-ejB" secondAttribute="leading" constant="8" id="geR-Ey-wWv"/>
@@ -98,9 +107,16 @@
                                                 <constraint firstItem="Qns-lZ-z7h" firstAttribute="centerY" secondItem="GIL-hD-ejB" secondAttribute="centerY" id="lGh-xc-WMs"/>
                                                 <constraint firstItem="ll5-ru-zLE" firstAttribute="leading" secondItem="GIL-hD-ejB" secondAttribute="leading" id="nEC-Ig-YBf"/>
                                                 <constraint firstItem="C8G-qq-DWo" firstAttribute="centerY" secondItem="GIL-hD-ejB" secondAttribute="centerY" id="nmV-Ve-Agk"/>
+                                                <constraint firstItem="QaM-sI-m2T" firstAttribute="leading" secondItem="GIL-hD-ejB" secondAttribute="leading" id="nnS-Ij-z67"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="averagePaceLbl" destination="5gt-SZ-hdK" id="sSw-xG-d2O"/>
+                                            <outlet property="dateLbl" destination="Qns-lZ-z7h" id="gxm-Rg-AQf"/>
+                                            <outlet property="durationLbl" destination="wQf-Ou-BWg" id="g17-lb-dAt"/>
+                                            <outlet property="totalDistanceLbl" destination="wlI-Jw-g4G" id="fwy-W5-qXV"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -121,6 +137,9 @@
                         <viewLayoutGuide key="safeArea" id="r9C-gJ-cS8"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Logs" image="tabbar-myLogIconGray" id="zWq-mT-j0T"/>
+                    <connections>
+                        <outlet property="tableView" destination="kF2-9t-1E4" id="WUc-Ji-Dmd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFq-MR-vf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
