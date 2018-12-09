@@ -41,5 +41,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app need your location for tracking your run</string>
+	<key>NSLocationUsageDescription</key>
+	<string>This app need your location for tracking your run</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app need your location for tracking your run</string>
 </dict>
 </plist>
