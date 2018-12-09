@@ -7,11 +7,31 @@
 //
 
 import UIKit
+import MapKit
+import Realm
 
 class CurrentRunVC: LocationVC {
 
     @IBOutlet weak var swipeBGImageView: UIImageView!
     @IBOutlet weak var sliderImageView: UIImageView!
+    @IBOutlet weak var duratuonLbl: UILabel!
+    @IBOutlet weak var paceLbl: UILabel!
+    @IBOutlet weak var distanceLbl: UILabel!
+    @IBOutlet weak var pauseBtn: UIButton!
+    
+    //MARK: - Variables
+    var startLocation: CLLocation!
+    var lastLocation: CLLocation!
+    var timer = Timer()
+    var runDistance: Double = 0.0
+    var pace = 0
+    var counter = 0
+    
+    
+    //MARK: - Constants
+    let resumeButton = UIImage(named: "resumeButton")
+    let pauseButton = UIImage(named: "pauseButton")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +42,60 @@ class CurrentRunVC: LocationVC {
         swipeGesture.delegate = self as? UIGestureRecognizerDelegate
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        manager?.delegate = self
+        manager?.distanceFilter = 10
+        startRun()
+    }
+    
+    
+    //MARK: - Start and run updating locations
+    func startRun() {
+        manager?.startUpdatingLocation()
+        startTimer()
+        pauseBtn.setImage(pauseButton, for: .normal)
+    }
+    
+    func endRun() {
+        manager?.stopUpdatingLocation()
+        //add object to Realm
+    }
+    
+    func pauseRun() {
+        startLocation = nil
+        lastLocation = nil
+        timer.invalidate()
+        manager?.stopUpdatingLocation()
+        pauseBtn.setImage(resumeButton, for: .normal)
+    }
+    
+    func startTimer() {
+        duratuonLbl.text = counter.formatTimeDurationToString()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateCounter() {
+        counter += 1
+        duratuonLbl.text = counter.formatTimeDurationToString()
+    }
+    
+    func calculatePace(time seconds: Int, miles: Double) -> String {
+        pace = Int(Double(seconds) / miles)
+        return pace.formatTimeDurationToString()
+    }
+    
+    //MARK: - PAUSE
+    
+    @IBAction func pauseBtnPressed(_ sender: Any) {
+        if timer.isValid {
+            pauseRun()
+        } else {
+            startRun()
+        }
+    }
+    
+    
+    //MARK: - Swiper for ImageView
     @objc func endRunSwiper(sender: UIPanGestureRecognizer) {
         let minAdjust: CGFloat = 80
         let maxAdjust: CGFloat = 130
@@ -32,6 +106,7 @@ class CurrentRunVC: LocationVC {
                     sliderView.center.x = sliderView.center.x + translation.x
                 } else if sliderView.center.x >= (swipeBGImageView.center.x + maxAdjust) {
                     sliderView.center.x = swipeBGImageView.center.x + maxAdjust
+                    endRun()
                     dismiss(animated: true, completion: nil)
                 } else {
                     sliderView.center.x = swipeBGImageView.center.x - minAdjust
@@ -45,5 +120,25 @@ class CurrentRunVC: LocationVC {
             }
         }
     }
+}
+
+extension CurrentRunVC: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            checkLocationAuthStatus()
+        }
+    }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if startLocation == nil {
+            startLocation = locations.first
+        } else if let location = locations.last {
+            runDistance += lastLocation.distance(from: location)
+            distanceLbl.text = "\(runDistance.metersToMiles(places: 2))"
+            if counter > 0 && runDistance > 0 {
+                paceLbl.text = calculatePace(time: counter, miles: runDistance.metersToMiles(places: 2))
+            }
+        }
+        lastLocation = locations.last
+    }
 }
