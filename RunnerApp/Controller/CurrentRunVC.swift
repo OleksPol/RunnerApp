@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-import Realm
+import RealmSwift
 
 class CurrentRunVC: LocationVC {
 
@@ -20,13 +20,13 @@ class CurrentRunVC: LocationVC {
     @IBOutlet weak var pauseBtn: UIButton!
     
     //MARK: - Variables
-    var startLocation: CLLocation!
-    var lastLocation: CLLocation!
-    var timer = Timer()
-    var runDistance: Double = 0.0
-    var pace = 0
-    var counter = 0
-    
+    fileprivate var startLocation: CLLocation!
+    fileprivate var lastLocation: CLLocation!
+    fileprivate var timer = Timer()
+    fileprivate var runDistance: Double = 0.0
+    fileprivate var pace = 0
+    fileprivate var counter = 0
+    fileprivate var coordinateLocations = List<Location>()
     
     //MARK: - Constants
     let resumeButton = UIImage(named: "resumeButton")
@@ -58,7 +58,7 @@ class CurrentRunVC: LocationVC {
     
     func endRun() {
         manager?.stopUpdatingLocation()
-        Run.addRunToRealm(pace: pace, distance: runDistance, duration: counter)
+        Run.addRunToRealm(pace: pace, distance: runDistance, duration: counter, locations: coordinateLocations)
     }
     
     func pauseRun() {
@@ -93,7 +93,6 @@ class CurrentRunVC: LocationVC {
             startRun()
         }
     }
-    
     
     //MARK: - Swiper for ImageView
     @objc func endRunSwiper(sender: UIPanGestureRecognizer) {
@@ -134,6 +133,8 @@ extension CurrentRunVC: CLLocationManagerDelegate {
             startLocation = locations.first
         } else if let location = locations.last {
             runDistance += lastLocation.distance(from: location)
+            let newLocation = Location(latitude: Double(lastLocation.coordinate.latitude), longitude: Double(lastLocation.coordinate.longitude))
+            coordinateLocations.insert(newLocation, at: 0)
             distanceLbl.text = "\(runDistance.metersToMiles(places: 2))"
             if counter > 0 && runDistance > 0 {
                 paceLbl.text = calculatePace(time: counter, miles: runDistance.metersToMiles(places: 2))
