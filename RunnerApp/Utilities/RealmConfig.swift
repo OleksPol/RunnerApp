@@ -16,10 +16,7 @@ class RealmConfig {
             fileURL: realmPath,
             schemaVersion: 0,
             migrationBlock: {migration, oldSchemaVersion in
-                if (oldSchemaVersion < 0) {
-                    // Nothing to do
-                    //Realm with automatic detect new properties and remove properties
-                }
+                if (oldSchemaVersion < 0) {}
         })
         return config
     }
