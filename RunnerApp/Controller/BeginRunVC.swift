@@ -39,6 +39,8 @@ class BeginRunVC: LocationVC {
         manager?.stopUpdatingLocation()
     }
     
+    
+    //MARK: - SETUP MAPVIEW and ADD LASTRUN
     func setupMapView() {
         if let overlay = addLastRunToMap() {
             if mapView.overlays.count > 0 {
@@ -74,6 +76,8 @@ class BeginRunVC: LocationVC {
         return MKPolyline(coordinates: coordinate, count: locations.count)
     }
     
+    
+    //MARK: - CENTER_MAP
     func centerMapOnUserLocation() {
         mapView.userTrackingMode = .follow
         let coordinateRegion = MKCoordinateRegion.init(center: mapView.userLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
@@ -95,6 +99,8 @@ class BeginRunVC: LocationVC {
         }
         return MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: (minLatitude + maxLatitude) / 2, longitude: (minLongitude + maxLongitude) / 2), span: MKCoordinateSpan(latitudeDelta: (maxLatitude - minLatitude) * 1.4, longitudeDelta: (maxLongitude - minLongitude) * 1.4))
     }
+    
+    //MARK: - IB_ACTIONS
     
     @IBAction func lastRunCloseBtn(_ sender: Any) {
         lastRunStack.isHidden = true
